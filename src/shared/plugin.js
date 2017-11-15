@@ -36,7 +36,7 @@ export default function VueMeta (Vue, options = {}) {
   Vue.mixin({
     beforeCreate () {
       // bind the $meta method to this component instance
-      Vue.prototype.$meta = $meta(options)
+      this.$meta = $meta(options)
 
       // Add a marker to know if it uses metaInfo
       if (typeof this.$options[options.keyName] !== 'undefined') {
