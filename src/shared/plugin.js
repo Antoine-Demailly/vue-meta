@@ -29,15 +29,15 @@ export default function VueMeta (Vue, options = {}) {
   // combine options
   options = assign(defaultOptions, options)
 
-  // bind the $meta method to this component instance
-  Vue.prototype.$meta = $meta(options)
-
   // store an id to keep track of DOM updates
   let batchID = null
 
   // watch for client side component updates
   Vue.mixin({
     beforeCreate () {
+      // bind the $meta method to this component instance
+      Vue.prototype.$meta = $meta(options)
+
       // Add a marker to know if it uses metaInfo
       if (typeof this.$options[options.keyName] !== 'undefined') {
         this._hasMetaInfo = true
