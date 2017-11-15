@@ -89,7 +89,7 @@ export default function VueMeta (Vue, options = {}) {
         const interval = setInterval(() => {
           if (this.$el.offsetParent !== null) return
           clearInterval(interval)
-          batchID = batchUpdate(batchID, () => this.$meta().refresh())
+          batchID = batchUpdate(batchID, () => this.$meta().refresh(true))
         }, 50)
       }
     }

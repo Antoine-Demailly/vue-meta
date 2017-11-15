@@ -10,7 +10,7 @@ export default function _updateClientMetaInfo (options = {}) {
    *
    * @param  {Object} newInfo - the meta info to update to
    */
-  return function updateClientMetaInfo (newInfo) {
+  return function updateClientMetaInfo (newInfo, preventChangedHook) {
     const htmlTag = document.getElementsByTagName('html')[0]
     // if this is not a server render, then update
     if (htmlTag.getAttribute(ssrAttribute) === null) {
@@ -53,7 +53,7 @@ export default function _updateClientMetaInfo (options = {}) {
       })
 
       // emit "event" with new info
-      if (typeof newInfo.changed === 'function') {
+      if (typeof newInfo.changed === 'function' && !preventChangedHook) {
         newInfo.changed.call(this, newInfo, addedTags, removedTags)
       }
     } else {

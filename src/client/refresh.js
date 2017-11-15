@@ -12,9 +12,9 @@ export default function _refresh (options = {}) {
    *
    * @return {Object} - new meta info
    */
-  return function refresh () {
+  return function refresh (preventChangedHook) {
     const info = getMetaInfo(options)(this.$root)
-    updateClientMetaInfo(options).call(this, info)
+    updateClientMetaInfo(options).call(this, info, preventChangedHook)
     return info
   }
 }
