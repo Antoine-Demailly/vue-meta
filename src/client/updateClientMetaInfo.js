@@ -53,7 +53,7 @@ export default function _updateClientMetaInfo (options = {}) {
       })
 
       // emit "event" with new info
-      if (typeof newInfo.changed === 'function' && !preventChangedHook && !Object.keys(addedTags).length && !Object.keys(removedTags).length) {
+      if (typeof newInfo.changed === 'function' && !preventChangedHook) {
         newInfo.changed.call(this, newInfo, addedTags, removedTags)
       }
     } else {
